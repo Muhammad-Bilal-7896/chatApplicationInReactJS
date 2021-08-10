@@ -26,6 +26,11 @@ import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Box from '@material-ui/core/Box';
+import PropTypes from 'prop-types';
+
 
 const useStyles = makeStyles((theme) => ({
   list: {
@@ -95,10 +100,62 @@ const useStyles = makeStyles((theme) => ({
       display: 'none',
     },
   },
+  root: {
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.paper,
+    display: 'flex',
+    height: 224,
+  },
+  tabs: {
+    borderRight: `1px solid ${theme.palette.divider}`,
+  },
 }));
+
+//The vertical tabs code
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`vertical-tabpanel-${index}`}
+      aria-labelledby={`vertical-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box p={3}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
+
+TabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.any.isRequired,
+  value: PropTypes.any.isRequired,
+};
+
+function a11yProps(index) {
+  return {
+    id: `vertical-tab-${index}`,
+    'aria-controls': `vertical-tabpanel-${index}`,
+  };
+}
+
+//The vertical tabs code
 
 export default function Home() {
   const classes = useStyles();
+
+  //Vertical Tabs
+  const [value, setValue] = React.useState(0);
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+  //Vertical Tabs
 
   //Nav bar code 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -215,22 +272,38 @@ export default function Home() {
       ///////////////////////////////////////////////////////////////////////////////
       /////////////////////////////////////////////////////////////////////////////// */}
       <div className="d-flex">
-        <IconButton aria-label="show 4 new mails" color="inherit">
+        <IconButton className="ml-3" aria-label="show 4 new mails" color="inherit">
           <DirectionsBusIcon fontSize="large" />
         </IconButton>
-        <h1 className="mt-2">BMS</h1>
+        <h1 className="mt-2 ml-3">BMS</h1>
       </div>
 
-      <List>
+      {/* <List>
         {['sadfsaf', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
+          <ListItem button onClick={() => alert("Hello")} key={text}>
             <ListItemIcon>
               <NearMeIcon />
             </ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
         ))}
-      </List>
+      </List> */}
+      <div>
+        <Tabs
+          orientation="vertical"
+          value={value}
+          onChange={handleChange}
+        >
+          <Tab label="Item One" {...a11yProps(0)} />
+          <Tab label="Item Two" {...a11yProps(1)} />
+          <Tab label="Item Three" {...a11yProps(2)} />
+          <Tab label="Item Four" {...a11yProps(3)} />
+          <Tab label="Item Five" {...a11yProps(4)} />
+          <Tab label="Item Six" {...a11yProps(5)} />
+          <Tab label="Item Seven" {...a11yProps(6)} />
+        </Tabs>
+      </div>
+
       {/* <Divider />
       <List>
         {['All mail', 'Trash', 'Spam'].map((text, index) => (
@@ -331,6 +404,32 @@ export default function Home() {
         {renderMobileMenu}
         {renderMenu}
       </div>
+
+      <div className={classes.root}>
+        <TabPanel value={value} index={0}>
+          Item One
+        </TabPanel>
+        <TabPanel value={value} index={1}>
+          Item Two
+        </TabPanel>
+        <TabPanel value={value} index={2}>
+          Item Three
+        </TabPanel>
+        <TabPanel value={value} index={3}>
+          Item Four
+        </TabPanel>
+        <TabPanel value={value} index={4}>
+          Item Five
+        </TabPanel>
+        <TabPanel value={value} index={5}>
+          Item Six
+        </TabPanel>
+        <TabPanel value={value} index={6}>
+          Item Seven
+        </TabPanel>
+      </div>
+
+
     </div>
   );
 }
