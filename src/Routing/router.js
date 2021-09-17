@@ -7,9 +7,9 @@ import Home from '../Components/Home.jsx'
 class AppRouter extends React.Component {
     render() {
         return (
-                  <Router>
-                      <Route exact path="/" component={Home} />
-                  </Router>
+            <Router>
+                <Route exact path="/" component={Home} />
+            </Router>
 
         )
     }
