@@ -4,6 +4,7 @@ const Home = () => {
   return (
     <>
       <NavBar />
+      <br />
       <div className="container">
         <div className="row">
           <div className="col-md-12">
@@ -17,6 +18,10 @@ const Home = () => {
               <li>SAAS(SCSS)</li>
               <li>Material UI</li>
               <li>Md Bootstrap</li>
+              <li>Firestore</li>
+              <li>Firebase</li>
+              <li>Firebase realtime database</li>
+              <li>Firebase auth</li>
             </ul>
           </div>
         </div>

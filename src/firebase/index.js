@@ -2,18 +2,18 @@ import firebase from 'firebase/app'
 import 'firebase/storage'
 import 'firebase/database'
 // Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// For Firebase JS SDK v9.0 and later, measurementId is optional
 
 try {
     const firebaseConfig = {
-        apiKey: "AIzaSyCizj_hKFU4s6cqVt3GTf18W9oMn9G-4pA",
-        authDomain: "architectsstaffmanager.firebaseapp.com",
-        databaseURL: "https://architectsstaffmanager-default-rtdb.firebaseio.com",
-        projectId: "architectsstaffmanager",
-        storageBucket: "architectsstaffmanager.appspot.com",
-        messagingSenderId: "550911242330",
-        appId: "1:550911242330:web:5c5fc2e0a60ea05c3be863",
-        measurementId: "G-483Y28377N"
+        apiKey: process.env.REACT_APP_API_KEY,
+        authDomain: process.env.REACT_APP_authDomain,
+        databaseURL: process.env.REACT_APP_databaseURL,
+        projectId:  process.env.REACT_APP_projectId,
+        storageBucket: process.env.REACT_APP_storageBucket,
+        messagingSenderId: process.env.REACT_APP_messagingSenderId,
+        appId: process.env.REACT_APP_appId,
+        measurementId:  process.env.REACT_APP_measurementId
     };
     // Initialize Firebase    
     firebase.initializeApp(firebaseConfig);
