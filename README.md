@@ -1,4 +1,4 @@
-# Getting Started with React-TypeScript-Mdbootstrap-Firebase-Material-UI-SAAS-Starter
+# Getting Started with Chat Application in React JS
 
 ### This project Consists of 
 - React
