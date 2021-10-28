@@ -3,7 +3,7 @@
     font-size: 25px;
     margin-left: 1%;
     padding-top: 5%;
-    color: rgb(12, 149, 31);
+    color: rgb(12, 55, 149);
     margin-left: 20px;
 }
 
@@ -12,13 +12,25 @@
 //     margin-top: -30px !important;
 // }
 
-.active
-{
+.active {
     border: 1px solid rgb(184, 184, 184) !important;
 }
 
 .search_text {
     margin-top: 13px !important;
+}
+
+// Styling for the button to add the new contacts
+.btn-add {
+    margin-top: 9px;
+    margin-left: 20px;
+}
+
+.btn-add button {
+    border: none !important;
+    width: 30px !important;
+    height: 40px !important;
+    text-align: center !important;
 }
 
 #docsNavBarTop {
@@ -40,6 +52,7 @@
 button:hover,
 button:focus {
     outline: none !important;
+    border: none !important;
 }
 // button:hover,
 // button:focus {

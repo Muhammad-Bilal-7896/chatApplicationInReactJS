@@ -27,7 +27,7 @@ const Chat = () => {
 
   mql.addListener(mediaQueryChanged);
 
-  useEffect(()=>{
+  useEffect(() => {
     console.log("This is the useEffect")
   })
 
@@ -42,6 +42,10 @@ const Chat = () => {
               <img width="50" src={logo} alt="Indexed.Finance" />
 
               <h2 id="logo-text-docs">ChatApp</h2>
+
+              <div className="btn-add">
+                <Button variant="outlined" color="primary"><i className="fas fa-2x fa-plus-circle"></i></Button>
+              </div>
             </div>
           </a>
           <form className="d-flex input-group w-auto">
@@ -49,6 +53,7 @@ const Chat = () => {
               <input type="search" className="form-control search_text" placeholder="Search Contacts" aria-label="Search" />
               <Button variant="contained" className="btnasalinside" color="primary">Search</Button>
             </div>
+
           </form>
         </div>
       </nav>
