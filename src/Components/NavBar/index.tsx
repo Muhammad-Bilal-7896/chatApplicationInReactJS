@@ -3,7 +3,7 @@ const NavBar = () => {
         <>
             <nav className="navbar navbar-light bg-dark">
                 <div className="container-fluid">
-                    <a className="navbar-brand text-light">ChatOnlineIn2021</a>
+                    <a className="navbar-brand text-light">A Work</a>
                     <form className="d-flex input-group w-auto">
                         <input type="search" className="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
                         <span className="input-group-text border-0" id="search-addon">
