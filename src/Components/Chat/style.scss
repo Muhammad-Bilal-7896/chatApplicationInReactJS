@@ -10,8 +10,8 @@
     position: absolute;
     top: 0%;
     width: 100%;
-    z-index: 10000;
-    background-color: var(--background-color);
+    z-index: 100000 !important;
+    background-color: white;
 }
 
 .btnasalinside {
@@ -51,7 +51,7 @@
 
 .tab-docs-left {
     background-color: var(--background-color);
-    height: 84vh;
+    height: auto;
 }
 
 /* 
