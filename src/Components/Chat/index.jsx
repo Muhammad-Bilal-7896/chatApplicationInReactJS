@@ -53,8 +53,8 @@ const Chat = () => {
           <div>
             {/* Tab navs */}
             <div className="nav flex-column nav-tabs text-center tab-docs-left" id="v-tabs-tab" role="tablist" aria-orientation="vertical">
-              <a className="nav-link docs-tabs active" id="v-tabs-the1-tab" data-mdb-toggle="tab" href="#v-tabs-the1" role="tab" aria-controls="v-tabs-the1" aria-selected="true">Home</a>
-              <a className="nav-link docs-tabs" id="v-tabs-the2-tab" data-mdb-toggle="tab" href="#v-tabs-the2" role="tab" aria-controls="v-tabs-the2" aria-selected="false">Profile</a>
+              <a className="nav-link docs-tabs active" id="v-tabs-the1-tab" data-mdb-toggle="tab" href="#v-tabs-the1" role="tab" aria-controls="v-tabs-the1" aria-selected="true">bilalmohib7896@gmail.com</a>
+              <a className="nav-link docs-tabs" id="v-tabs-the2-tab" data-mdb-toggle="tab" href="#v-tabs-the2" role="tab" aria-controls="v-tabs-the2" aria-selected="false">mbilals9922@gmail.com</a>
               <a className="nav-link docs-tabs" id="v-tabs-the3-tab" data-mdb-toggle="tab" href="#v-tabs-the3" role="tab" aria-controls="v-tabs-the3" aria-selected="false">Messages</a>
               <a className="nav-link docs-tabs" id="v-tabs-about-tab" data-mdb-toggle="tab" href="#v-tabs-about" role="tab" aria-controls="v-tabs-about" aria-selected="false">About</a>
               <a className="nav-link docs-tabs" id="v-tabs-country-tab" data-mdb-toggle="tab" href="#v-tabs-country" role="tab" aria-controls="v-tabs-country" aria-selected="false">Country</a>
