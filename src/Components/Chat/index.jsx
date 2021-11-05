@@ -1,4 +1,10 @@
+import React, { useEffect, useState } from "react";
+
+import Sidebar from "react-sidebar";
+
 import "./style.scss";
+
+const mql = window.matchMedia(`(min-width: 800px)`);
 
 const Chat = () => {
   return (
