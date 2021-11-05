@@ -24,29 +24,6 @@ const Chat = () => {
 
   return (
     <>
-      <nav className="navbar" id="docsNavBarTop">
-        <div className="container-fluid">
-
-          <a className="navbar-brand">
-
-            <div className="d-flex" onClick={() => setIsOpen(!isOpen)}>
-
-              <img width="50" src="" alt="Indexed.Finance" />
-
-              <h2 id="logo-text-docs">Indexed Finance</h2>
-            </div>
-          </a>
-          <form className="d-flex input-group w-auto">
-            <div id="btn-search">
-              <input type="search" className="form-control" placeholder="Search ..." aria-label="Search" />
-              <button className="btn btn-outline-primary btnasalinside" type="button" data-mdb-ripple-color="dark">
-                Search
-              </button>
-            </div>
-          </form>
-        </div>
-      </nav>
-      <div>
         <Sidebar
           sidebar={
             <div>
@@ -183,7 +160,7 @@ const Chat = () => {
             </div>
           </div>
         </Sidebar>
-      </div>
+     
     </>
   )
 }

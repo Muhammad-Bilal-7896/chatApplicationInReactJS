@@ -1,0 +1,126 @@
+#logo-text-docs {
+    font-weight: 500;
+    font-size: 25px;
+    margin-left: 1%;
+    padding-top: 2%;
+    color: var(--text-color);
+}
+
+#docsNavBarTop {
+    position: absolute;
+    top: 0%;
+    width: 100%;
+    z-index: 10000;
+    background-color: var(--background-color);
+}
+
+.btnasalinside {
+    font-size: 18px;
+}
+
+.mobile-dark-doc {
+    display: none;
+}
+
+/* 
+.tab-pane
+{
+    position: relative;
+    z-index: -10000;
+    display: none;
+} */
+
+#v-tabs-the1, #v-tabs-the2, #v-tabs-the3 #v-tabs-about, #v-tabs-country, #v-tabs-region, #v-tabs-continent, #v-tabs-province, #v-tabs-bioData, #v-tabs-company {
+    position: relative;
+    z-index: -10000;
+}
+
+#logo-text-docs:hover {
+    color: #458cff;
+    transition: 0.1s linear;
+    cursor: pointer;
+}
+
+#btn-search {
+    margin-right: 10%;
+    display: flex;
+}
+
+.tab-docs-left {
+    background-color: var(--background-color);
+    height: 84vh;
+}
+
+/* 
+#Docs-bars
+{
+  color: var(--text-color);
+  background-color: rgb(110, 110, 110);
+  height: 100%;
+  width: 100%;
+  border-radius: 2px;
+  margin-top: 10px;
+  margin-right: 10px;
+  font-size: 30px;
+} */
+
+#Docs-bars {
+    display: inline-block;
+    cursor: pointer;
+    margin-left: 20px;
+    margin-top: 2px;
+    display: none;
+}
+
+.bar1, .bar2, .bar3 {
+    width: 30px;
+    height: 4px;
+    background-color: #333;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+.change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+    transform: rotate(-45deg) translate(-9px, 6px);
+}
+
+.change .bar2 {
+    opacity: 0;
+}
+
+.change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px);
+    transform: rotate(45deg) translate(-8px, -8px);
+}
+
+@media all and (max-width:800px) {
+    #Docs-bars {
+        display: inline-block;
+    }
+    #btn-search {
+        display: none;
+    }
+    .mobile-dark-doc {
+        display: block;
+        margin-right: 30px;
+    }
+}
+
+/* @media all and (max-width:600px) {
+    #Docs-bars {
+        display: inline-block;
+    }
+    #btn-search
+    {
+        display: none;
+    }
+} */
+
+@media all and (max-width:330px) {
+    .mobile-dark-doc {
+        position: absolute;
+left: 1%;
+top: 40%;
+    }
+}
