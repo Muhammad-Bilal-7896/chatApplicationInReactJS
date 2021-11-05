@@ -2,8 +2,18 @@
     font-weight: 500;
     font-size: 25px;
     margin-left: 1%;
-    padding-top: 2%;
-    color: var(--text-color);
+    padding-top: 5%;
+    color: rgb(12, 149, 31);
+    margin-left: 20px;
+}
+
+.active
+{
+    border: 1px solid rgb(184, 184, 184) !important;
+}
+
+.search_text {
+    margin-top: 13px !important;
 }
 
 #docsNavBarTop {
@@ -16,9 +26,19 @@
 
 .btnasalinside {
     font-size: 18px;
-    width: fit-content !important;
-    height: 50px !important;
+    // width: fit-content !important;
+    margin-top: 13px !important;
+    height: 38px !important;
+    background-color: blue !important;
 }
+button:hover,
+button:focus {
+    outline: none !important;
+}
+// button:hover,
+// button:focus {
+//     outline: none !important;
+// }
 
 .mobile-dark-doc {
     display: none;
@@ -50,7 +70,7 @@
 }
 
 .tab-docs-left {
-    background-color: var(--background-color);
+    background-color: white;
     height: auto;
 }
 

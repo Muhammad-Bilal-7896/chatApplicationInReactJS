@@ -4,6 +4,9 @@ import logo from "../../resources/logo.png";
 
 import Sidebar from "react-sidebar";
 
+import Button from '@material-ui/core/Button';
+
+
 import "./style.scss";
 
 const mql = window.matchMedia(`(min-width: 800px)`);
@@ -32,20 +35,15 @@ const Chat = () => {
           <a className="navbar-brand">
 
             <div className="d-flex" onClick={() => setIsOpen(!isOpen)}>
-            
-                <img width="50" src={logo} alt="Indexed.Finance" />
-            
+              <img width="50" src={logo} alt="Indexed.Finance" />
 
-              <h2 id="logo-text-docs">Indexed Finance</h2>
+              <h2 id="logo-text-docs">ChatApp</h2>
             </div>
           </a>
           <form className="d-flex input-group w-auto">
             <div id="btn-search">
-              <input type="search" className="form-control" placeholder="Search ..." aria-label="Search" />
-              <button className="btn btn-primary btnasalinside">
-                Search
-              </button>
-       
+              <input type="search" className="form-control search_text" placeholder="Search Contacts" aria-label="Search" />
+              <Button variant="contained" className="btnasalinside" color="primary">Search</Button>
             </div>
           </form>
         </div>
