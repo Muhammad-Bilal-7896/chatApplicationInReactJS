@@ -7,6 +7,11 @@
     margin-left: 20px;
 }
 
+// #v-tabs-tab
+// {
+//     margin-top: -30px !important;
+// }
+
 .active
 {
     border: 1px solid rgb(184, 184, 184) !important;
@@ -19,6 +24,7 @@
 #docsNavBarTop {
     position: absolute;
     top: 0%;
+    height: 95px !important;
     width: 100%;
     z-index: 100000 !important;
     background-color: white;
