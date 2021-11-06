@@ -27,6 +27,10 @@ const Chat = () => {
 
   mql.addListener(mediaQueryChanged);
 
+  useEffect(()=>{
+    console.log("This is the useEffect")
+  })
+
   return (
     <>
       <nav className="navbar" id="docsNavBarTop">
