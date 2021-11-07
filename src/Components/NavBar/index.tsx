@@ -12,6 +12,7 @@ const NavBar = () => {
                         <div className="d-flex">
                             <img width="50" title="Logo" src={logo} alt="Indexed.Finance" />
                             <h2 id="logo-text-docs" title="Chat App">ChatApp</h2>
+
                             <div title="Add Contacts" className="btn-add">
                                 <Button variant="outlined" color="primary"><i className="fas fa-2x fa-plus-circle"></i></Button>
                             </div>

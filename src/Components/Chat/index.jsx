@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 
-import logo from "../../resources/logo.png";
-
 import Sidebar from "react-sidebar";
 
-import Button from '@material-ui/core/Button';
+// import Button from '@material-ui/core/Button';
 
 
 import "./style.scss";
