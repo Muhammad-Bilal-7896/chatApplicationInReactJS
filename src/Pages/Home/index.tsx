@@ -6,7 +6,7 @@ import "./style.scss";
 const Home = () => {
   return (
     <>
-      {/* <NavBar /> */}
+      <NavBar />
       <Chat />
     </>
   )

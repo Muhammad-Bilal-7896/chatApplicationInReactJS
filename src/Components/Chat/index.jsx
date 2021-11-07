@@ -33,30 +33,6 @@ const Chat = () => {
 
   return (
     <>
-      <nav className="navbar" id="docsNavBarTop">
-        <div className="container-fluid">
-
-          <a className="navbar-brand">
-
-            <div className="d-flex" onClick={() => setIsOpen(!isOpen)}>
-              <img width="50" src={logo} alt="Indexed.Finance" />
-
-              <h2 id="logo-text-docs">ChatApp</h2>
-
-              <div title="Add Contacts" className="btn-add">
-                <Button variant="outlined" color="primary"><i className="fas fa-2x fa-plus-circle"></i></Button>
-              </div>
-            </div>
-          </a>
-          <form className="d-flex input-group w-auto">
-            <div id="btn-search">
-              <input type="search" className="form-control search_text" placeholder="Search Contacts" aria-label="Search" />
-              <Button variant="contained" className="btnasalinside" color="primary">Search</Button>
-            </div>
-
-          </form>
-        </div>
-      </nav>
       <Sidebar
         sidebar={
           <div>
