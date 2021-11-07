@@ -1,5 +1,5 @@
-import NavBar from "../NavBar";
-import Chat from "../Chat";
+import NavBar from "../../Components/NavBar";
+import Chat from "../../Components/Chat";
 
 import "./style.scss";
 

@@ -43,7 +43,7 @@ const Chat = () => {
 
               <h2 id="logo-text-docs">ChatApp</h2>
 
-              <div className="btn-add">
+              <div title="Add Contacts" className="btn-add">
                 <Button variant="outlined" color="primary"><i className="fas fa-2x fa-plus-circle"></i></Button>
               </div>
             </div>
