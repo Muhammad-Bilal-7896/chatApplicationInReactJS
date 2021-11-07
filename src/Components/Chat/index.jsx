@@ -4,7 +4,6 @@ import Sidebar from "react-sidebar";
 
 // import Button from '@material-ui/core/Button';
 
-
 import "./style.scss";
 
 const mql = window.matchMedia(`(min-width: 800px)`);
