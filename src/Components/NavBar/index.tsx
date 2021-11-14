@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button';
 
 import "./index.scss";
 
-const NavBar = (props:any) => {
+const NavBar = (props: any) => {
     return (
         <>
             {(props.type === "general") ? (
@@ -15,7 +15,7 @@ const NavBar = (props:any) => {
                                     <img width="50" title="Logo" src={logo} alt="Indexed.Finance" />
                                     <h2 id="logo-text-docs" title="Chat App">ChatApp</h2>
 
-                                   
+
                                 </div>
                             </a>
                             <form className="d-flex input-group w-auto">
@@ -35,7 +35,12 @@ const NavBar = (props:any) => {
                                     <img width="50" title="Logo" src={logo} alt="Indexed.Finance" />
                                     <h2 id="logo-text-docs" title="Chat App">ChatApp</h2>
 
-                                    <div title="Add Contacts" className="btn-add">
+                                    <div
+                                        title="Add Contacts"
+                                        className="btn-add"
+                                        data-mdb-toggle="modal"
+                                        data-mdb-target="#AddContactModal"
+                                        data-mdb-whatever="@getbootstrap">
                                         <Button variant="outlined" color="primary"><i className="fas fa-2x fa-plus-circle"></i></Button>
                                     </div>
                                 </div>

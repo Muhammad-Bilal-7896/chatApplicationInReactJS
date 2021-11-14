@@ -165,20 +165,13 @@ const Chat = () => {
             </div>
           </div>
         </div>
-        <button
-          type="button"
-          class="btn btn-primary"
-          data-mdb-toggle="modal"
-          data-mdb-target="#AddContactModal"
-          data-mdb-whatever="@getbootstrap"
-        >
-          Open modal for @getbootstrap
-        </button>
 
+
+        {/* Modal Content Will be here */}
         <div
           class="modal fade"
           id="AddContactModal"
-          tabindex="-1"
+          tabindex="1"
           aria-labelledby="AddContactModalLabel"
           aria-hidden="true"
         >
@@ -214,6 +207,7 @@ const Chat = () => {
             </div>
           </div>
         </div>
+        {/* Modal Content Will be here */}
       </Sidebar>
 
     </>

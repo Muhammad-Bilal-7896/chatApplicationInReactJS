@@ -49,11 +49,16 @@
     height: 38px !important;
     background-color: blue !important;
 }
-// button:hover,
-// button:focus {
-//     outline: none !important;
-//     border: none !important;
-// }
+//Modal Content Will be in it
+#AddContactModal
+{
+    z-index: 1000000 !important;
+}
+button:hover,
+button:focus {
+    outline: none !important;
+    border: none !important;
+}
 // button:hover,
 // button:focus {
 //     outline: none !important;
