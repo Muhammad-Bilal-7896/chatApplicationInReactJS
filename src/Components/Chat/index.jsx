@@ -167,6 +167,7 @@ const Chat = () => {
           </div>
         </div>
 
+        <input placeholder="like 3081511889" type="number" className="form-control" id="message_text" />
 
         {/* Modal Content Will be here */}
         <div
@@ -216,6 +217,8 @@ const Chat = () => {
         </div>
         {/* Modal Content Will be here */}
       </Sidebar>
+
+      
 
     </>
   )
