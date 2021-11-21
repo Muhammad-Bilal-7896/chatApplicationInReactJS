@@ -170,9 +170,9 @@ const Chat = () => {
         </div>
 
         <div className="w-100 d-flex" id="message_text">
-          <input placeholder="Send Message" type="number" className="form-control ml-2 mt-0" />
+          <input placeholder="Send Message" type="text" className="form-control ml-2 mt-0" />
 
-          <button type="button" id="send_button" className="btn bg-dark btn-transparent" style={{marginBottom:"10px"}}> <img width="25" src={send_message_icon} alt="Send" /> </button>
+          <Button type="button" id="send_button" className="btn bg-dark btn-transparent">Send</Button>
         </div>
 
 
@@ -225,9 +225,6 @@ const Chat = () => {
         </div>
         {/* Modal Content Will be here */}
       </Sidebar>
-
-
-
     </>
   )
 }
