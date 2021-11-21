@@ -35,6 +35,74 @@ const Chat = () => {
     setSidebarDocked(mql.matches);
   }
 
+  const setUpRecaptcha = () => {
+    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
+      "recaptcha-container",
+      {
+        size: "invisible",
+        callback: function (response) {
+          console.log("Captcha Resolved");
+          onSignInSubmit();
+        },
+        defaultCountry: "PK",
+      }
+    );
+  };
+
+  const onSignInSubmit = (e) => {
+    e.preventDefault();
+    setUpRecaptcha();
+    let phoneNumber = "+92" + this.state.mobile;
+    console.log(phoneNumber);
+    let appVerifier = window.recaptchaVerifier;
+    firebase
+      .auth()
+      .signInWithPhoneNumber(phoneNumber, appVerifier)
+      .then(function (confirmationResult) {
+        // SMS sent. Prompt user to type the code from the message, then sign the
+        // user in with confirmationResult.confirm(code).
+        window.confirmationResult = confirmationResult;
+        // console.log(confirmationResult);
+        alert("OTP is sent.Enter it now.");
+      })
+      .catch(function (error) {
+        alert(error)
+        console.log(error);
+      });
+  };
+  
+  onSubmitOtp = (e) => {
+    e.preventDefault();
+    let otpInput = this.state.otp;
+    let optConfirm = window.confirmationResult;
+    // console.log(codee);
+    optConfirm
+      .confirm(otpInput)
+      .then((result) => {
+        // User signed in successfully.
+        // console.log("Result" + result.verificationID);
+        let mobilePhone = this.state.mobile;
+        let previous = this.props.SELLER_DATA;
+        this.props.sendData({
+          ...previous,
+          mobilePhone
+        })
+        this.props.set_seller_data({
+          ...previous,
+          mobilePhone,
+          isSahi: true
+        })
+        alert("Phone Number Verified Successfully");
+        // let data=this.props
+
+        let user = result.user;
+      })
+      .catch(function (error) {
+        console.log(error);
+        alert("INVALID OTP.PLEASE TRY AGAIN");
+      });
+  };
+
   mql.addListener(mediaQueryChanged);
 
   useEffect(() => {
@@ -221,7 +289,7 @@ const Chat = () => {
                     <label for="recipient-name" className="col-form-label">Enter the Mobile Phone Number of the Person:</label>
                     <input placeholder="like 3081511889" value={phone_number} onChange={(e) => setPhone_number(e.target.value)} type="number" className="form-control" id="input_text_code" />
                     <h6 className="text-danger mt-2">Note: Currently this service is only for +92 i.e for pakistan</h6>
-
+                    <div id="recaptcha-container"></div>
                     <button type="button" className="btn btn-primary" title="Send Code">Send Code</button>
 
                   </div>
