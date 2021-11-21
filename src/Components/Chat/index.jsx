@@ -13,9 +13,17 @@ const mql = window.matchMedia(`(min-width: 800px)`);
 
 const Chat = () => {
 
+  const contacts = [
+    { id: 1, name: "John Doe" },
+    { id: 2, name: "Victor Wayne" },
+    { id: 3, name: "Jane Doe" },
+  ];
+
   const [isOpen, setIsOpen] = useState(true);
 
   const [sidebarDocked, setSidebarDocked] = useState(mql.matches);
+
+  const [phone_number, setPhone_number] = useState(0);
 
   const toggleCollapse = (val) => {
     setIsOpen(val);
@@ -36,8 +44,17 @@ const Chat = () => {
       <Sidebar
         sidebar={
           <div>
+
             {/* Tab navs */}
             <div className="nav flex-column nav-tabs text-center tab-docs-left" id="v-tabs-tab" role="tablist" aria-orientation="vertical">
+              {contacts.map((contact,i) => (
+                <a className="nav-link docs-tabs" id="v-tabs-the1-tab" data-mdb-toggle="tab" href={`#v-tabs-the${(i+1)}`} role="tab" aria-controls="v-tabs-the1" aria-selected="true">{contact.name}</a>
+              ))}
+            </div>
+            {/* Tab navs */}
+
+            {/* <div className="nav flex-column nav-tabs text-center tab-docs-left" id="v-tabs-tab" role="tablist" aria-orientation="vertical">
+
               <a className="nav-link docs-tabs active" id="v-tabs-the1-tab" data-mdb-toggle="tab" href="#v-tabs-the1" role="tab" aria-controls="v-tabs-the1" aria-selected="true">bilalmohib7896@gmail.com</a>
               <a className="nav-link docs-tabs" id="v-tabs-the2-tab" data-mdb-toggle="tab" href="#v-tabs-the2" role="tab" aria-controls="v-tabs-the2" aria-selected="false">mbilals9922@gmail.com</a>
               <a className="nav-link docs-tabs" id="v-tabs-the3-tab" data-mdb-toggle="tab" href="#v-tabs-the3" role="tab" aria-controls="v-tabs-the3" aria-selected="false">Messages</a>
@@ -48,7 +65,7 @@ const Chat = () => {
               <a className="nav-link docs-tabs" id="v-tabs-province-tab" data-mdb-toggle="tab" href="#v-tabs-province" role="tab" aria-controls="v-tabs-province" aria-selected="false">Province</a>
               <a className="nav-link docs-tabs" id="v-tabs-bioData-tab" data-mdb-toggle="tab" href="#v-tabs-bioData" role="tab" aria-controls="v-tabs-bioData" aria-selected="false">Bio-Data</a>
               <a className="nav-link docs-tabs" id="v-tabs-company-tab" data-mdb-toggle="tab" href="#v-tabs-company" role="tab" aria-controls="v-tabs-company" aria-selected="false">Company</a>
-            </div>
+            </div> */}
             {/* Tab navs */}
           </div>
         }
@@ -200,7 +217,7 @@ const Chat = () => {
                 <form>
                   <div className="mb-3">
                     <label for="recipient-name" className="col-form-label">Enter the Mobile Phone Number of the Person:</label>
-                    <input placeholder="like 3081511889" type="number" className="form-control" id="input_text_code" />
+                    <input placeholder="like 3081511889" value={phone_number} onChange={(e) => setPhone_number(e.target.value)} type="number" className="form-control" id="input_text_code" />
                     <h6 className="text-danger mt-2">Note: Currently this service is only for +92 i.e for pakistan</h6>
 
                     <button type="button" className="btn btn-primary" title="Send Code">Send Code</button>
