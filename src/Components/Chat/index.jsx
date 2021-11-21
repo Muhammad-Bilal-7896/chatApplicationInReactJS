@@ -170,45 +170,44 @@ const Chat = () => {
 
         {/* Modal Content Will be here */}
         <div
-          class="modal fade"
+          className="modal fade"
           id="AddContactModal"
           tabindex="1"
           aria-labelledby="AddContactModalLabel"
           aria-hidden="true"
         >
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add Contacts</h5>
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="exampleModalLabel">Add Contacts</h5>
                 <button
                   type="button"
-                  class="btn-close"
+                  className="btn-close"
                   data-mdb-dismiss="modal"
                   aria-label="Close"
                 ></button>
               </div>
-              <div class="modal-body">
+              <div className="modal-body">
                 <form>
-                  <div class="mb-3">
-                    <label for="recipient-name" class="col-form-label">Enter the Mobile Phone Number of the Person:</label>
-                    <input placeholder="like 3081511889" type="number" class="form-control" id="input_text_code" />
+                  <div className="mb-3">
+                    <label for="recipient-name" className="col-form-label">Enter the Mobile Phone Number of the Person:</label>
+                    <input placeholder="like 3081511889" type="number" className="form-control" id="input_text_code" />
                     <h6 className="text-danger mt-2">Note: Currently this service is only for +92 i.e for pakistan</h6>
 
-                    <Button variant="contained" className="btnasalinside" color="primary" title="Send Code">Send Code</Button>
+                    <button type="button" className="btn btn-primary" title="Send Code">Send Code</button>
 
                   </div>
 
-                  <div class="mb-3">
-                    <label for="message-text" class="col-form-label">Enter OTP</label>
-                    <textarea class="form-control" id="message-text"></textarea>
-                  </div>
+                  <div className="mb-3">
+                    <label for="message-text" className="col-form-label">Enter OTP</label>
+                    <input placeholder="i.e 45644" type="number" className="form-control" id="input_text_code" />                  </div>
 
-                  <button className="btn btn-success">Verify</button>
+                  <button type="button" className="btn btn-success">Verify</button>
 
                 </form>
               </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">
+              <div className="modal-footer">
+                <button type="button" className="btn btn-secondary" data-mdb-dismiss="modal">
                   Close
                 </button>
               </div>
