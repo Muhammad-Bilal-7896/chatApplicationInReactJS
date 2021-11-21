@@ -1,5 +1,6 @@
 import { Button } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
+import firebase from "../../firebase/index";
 
 import send_message_icon from "../../resources/send_button.png";
 
@@ -71,9 +72,9 @@ const Chat = () => {
       });
   };
   
-  onSubmitOtp = (e) => {
+  const onSubmitOtp = (e) => {
     e.preventDefault();
-    let otpInput = this.state.otp;
+    let otpInput = otp_code;
     let optConfirm = window.confirmationResult;
     // console.log(codee);
     optConfirm
@@ -81,17 +82,8 @@ const Chat = () => {
       .then((result) => {
         // User signed in successfully.
         // console.log("Result" + result.verificationID);
-        let mobilePhone = this.state.mobile;
-        let previous = this.props.SELLER_DATA;
-        this.props.sendData({
-          ...previous,
-          mobilePhone
-        })
-        this.props.set_seller_data({
-          ...previous,
-          mobilePhone,
-          isSahi: true
-        })
+        let mobilePhone = phone_number;
+        //Yahan par mobile number verify hoga
         alert("Phone Number Verified Successfully");
         // let data=this.props
 
@@ -290,7 +282,7 @@ const Chat = () => {
                     <input placeholder="like 3081511889" value={phone_number} onChange={(e) => setPhone_number(e.target.value)} type="number" className="form-control" id="input_text_code" />
                     <h6 className="text-danger mt-2">Note: Currently this service is only for +92 i.e for pakistan</h6>
                     <div id="recaptcha-container"></div>
-                    <button type="button" className="btn btn-primary" title="Send Code">Send Code</button>
+                    <button type="button" className="btn btn-primary" title="Send Code" onClick={onSignInSubmit}>Send Code</button>
 
                   </div>
 
@@ -299,7 +291,7 @@ const Chat = () => {
                     <input placeholder="i.e 45644" type="number" value={otp_code} onChange={(e) => set_otp_code(e.target.value)} className="form-control" id="input_text_code" />
                   </div>
 
-                  <button type="button" className="btn btn-success">Verify</button>
+                  <button type="button" className="btn btn-success" onClick={onSubmitOtp}>Verify</button>
 
                 </form>
               </div>
