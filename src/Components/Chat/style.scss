@@ -7,15 +7,14 @@
     margin-left: 20px;
 }
 
-#message_text
-{
+#message_text {
     position: fixed;
     bottom: 0%;
-    margin-right: 30px;
+    right: 15px !important;
+    width: 80% !important;
 }
 
-#input_text_code
-{
+#input_text_code {
     width: 50% !important;
 }
 
@@ -62,8 +61,7 @@
     background-color: blue !important;
 }
 //Modal Content Will be in it
-#AddContactModal
-{
+#AddContactModal {
     z-index: 1000000 !important;
 }
 button:hover,
