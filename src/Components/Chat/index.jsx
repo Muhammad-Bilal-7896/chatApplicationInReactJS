@@ -25,6 +25,8 @@ const Chat = () => {
 
   const [phone_number, setPhone_number] = useState(0);
 
+  const [otp_code, set_otp_code] = useState(0);
+
   const toggleCollapse = (val) => {
     setIsOpen(val);
   }
@@ -47,8 +49,8 @@ const Chat = () => {
 
             {/* Tab navs */}
             <div className="nav flex-column nav-tabs text-center tab-docs-left" id="v-tabs-tab" role="tablist" aria-orientation="vertical">
-              {contacts.map((contact,i) => (
-                <a className="nav-link docs-tabs" id="v-tabs-the1-tab" data-mdb-toggle="tab" href={`#v-tabs-the${(i+1)}`} role="tab" aria-controls="v-tabs-the1" aria-selected="true">{contact.name}</a>
+              {contacts.map((contact, i) => (
+                <a className="nav-link docs-tabs" id="v-tabs-the1-tab" data-mdb-toggle="tab" href={`#v-tabs-the${(i + 1)}`} role="tab" aria-controls="v-tabs-the1" aria-selected="true">{contact.name}</a>
               ))}
             </div>
             {/* Tab navs */}
@@ -226,7 +228,8 @@ const Chat = () => {
 
                   <div className="mb-3">
                     <label for="message-text" className="col-form-label">Enter OTP</label>
-                    <input placeholder="i.e 45644" type="number" className="form-control" id="input_text_code" />                  </div>
+                    <input placeholder="i.e 45644" type="number" value={otp_code} onChange={(e) => set_otp_code(e.target.value)} className="form-control" id="input_text_code" />
+                  </div>
 
                   <button type="button" className="btn btn-success">Verify</button>
 
