@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button';
 import "./index.scss";
 
 const NavBar = (props: any) => {
+    
     return (
         <>
             {(props.type === "general") ? (

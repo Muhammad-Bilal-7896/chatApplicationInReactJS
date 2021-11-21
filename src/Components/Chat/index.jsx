@@ -1,8 +1,10 @@
 import { Button } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
-import firebase from "../../firebase/index";
 
-import send_message_icon from "../../resources/send_button.png";
+import firebase from "../../firebase/index";
+import "firebase/firestore";
+
+// import send_message_icon from "../../resources/send_button.png";
 
 import Sidebar from "react-sidebar";
 
@@ -53,7 +55,7 @@ const Chat = () => {
   const onSignInSubmit = (e) => {
     e.preventDefault();
     setUpRecaptcha();
-    let phoneNumber = "+92" + this.state.mobile;
+    let phoneNumber = "+92" + phone_number;
     console.log(phoneNumber);
     let appVerifier = window.recaptchaVerifier;
     firebase
@@ -291,7 +293,7 @@ const Chat = () => {
                     <input placeholder="i.e 45644" type="number" value={otp_code} onChange={(e) => set_otp_code(e.target.value)} className="form-control" id="input_text_code" />
                   </div>
 
-                  <button type="button" className="btn btn-success" onClick={onSubmitOtp}>Verify</button>
+                  <button type="button" className="btn btn-success" onClick={onSubmitOtp} data-mdb-dismiss="modal">Verify</button>
 
                 </form>
               </div>
