@@ -190,7 +190,7 @@ const Chat = () => {
               <div class="modal-body">
                 <form>
                   <div class="mb-3">
-                    <label for="recipient-name" class="col-form-label">Enter the Mobile Phone Number:</label>
+                    <label for="recipient-name" class="col-form-label">Enter the Mobile Phone Number of the Person:</label>
                     <input placeholder="Write Phone Number like 3081511889" type="number" class="form-control" id="input_text_code" />
                     <h6 className="text-danger mt-2">Note: Currently this service is only for +92 i.e for pakistan</h6>
 
