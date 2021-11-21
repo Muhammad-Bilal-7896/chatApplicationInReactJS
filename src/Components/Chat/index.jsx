@@ -1,3 +1,4 @@
+import { Button } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 
 import Sidebar from "react-sidebar";
@@ -178,7 +179,7 @@ const Chat = () => {
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Add Contacts</h5>
                 <button
                   type="button"
                   class="btn-close"
@@ -189,9 +190,14 @@ const Chat = () => {
               <div class="modal-body">
                 <form>
                   <div class="mb-3">
-                    <label for="recipient-name" class="col-form-label">Recipient:</label>
-                    <input type="text" class="form-control" id="recipient-name" />
+                    <label for="recipient-name" class="col-form-label">Enter the Mobile Phone Number:</label>
+                    <input placeholder="Write Phone Number like 3081511889" type="number" class="form-control" id="input_text_code" />
+                    <h6 className="text-danger mt-2">Note: Currently this service is only for +92 i.e for pakistan</h6>
+
+                    <Button variant="contained" className="btnasalinside" color="primary" title="Send Code">Send Code</Button>
+
                   </div>
+
                   <div class="mb-3">
                     <label for="message-text" class="col-form-label">Message:</label>
                     <textarea class="form-control" id="message-text"></textarea>
