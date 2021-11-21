@@ -10,8 +10,15 @@
 #message_text {
     position: fixed;
     bottom: 0%;
-    right: 15px !important;
+    right: 20px !important;
     width: 80% !important;
+}
+
+#send_button
+{
+    height: 35px;
+    width: 100px;
+    
 }
 
 #input_text_code {

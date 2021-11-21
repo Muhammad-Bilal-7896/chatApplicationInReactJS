@@ -1,6 +1,8 @@
 import { Button } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 
+import send_message_icon from "../../resources/send_button.png";
+
 import Sidebar from "react-sidebar";
 
 // import Button from '@material-ui/core/Button';
@@ -167,7 +169,13 @@ const Chat = () => {
           </div>
         </div>
 
-        <input placeholder="Send Message" type="number" className="form-control" id="message_text" />
+        <div className="w-100 d-flex" id="message_text">
+          <input placeholder="Send Message" type="number" className="form-control ml-2 mt-0" />
+
+          <button type="button" id="send_button" className="btn bg-dark btn-transparent" style={{marginBottom:"10px"}}> <img width="25" src={send_message_icon} alt="Send" /> </button>
+        </div>
+
+
 
         {/* Modal Content Will be here */}
         <div
@@ -218,7 +226,7 @@ const Chat = () => {
         {/* Modal Content Will be here */}
       </Sidebar>
 
-      
+
 
     </>
   )
