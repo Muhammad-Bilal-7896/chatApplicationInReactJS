@@ -136,7 +136,7 @@ const Chat = () => {
             data.push(Object.assign({
               id: element.id,
               uid: element.uid,
-              addedPhone:element.addedPhone,
+              addedPhone: element.addedPhone,
               userPhone: element.userPhone,
               dateTimeAdded: element.dateTimeAdded
             }, element.data()))
@@ -151,7 +151,7 @@ const Chat = () => {
         })
       ///////////////////////////////////This code is for RETRIVING DATABASE data//////////////////////////
     }
-    else{
+    else {
       console.log("User should be signed in first to get the database data.");
     }
 
@@ -244,9 +244,13 @@ const Chat = () => {
           <div>
             {/* Tab navs */}
             <div className="nav flex-column nav-tabs text-center tab-docs-left" id="v-tabs-tab" role="tablist" aria-orientation="vertical">
-              {firestoreData.map((e, i) => (
-                <a className="nav-link docs-tabs" id="v-tabs-the1-tab" data-mdb-toggle="tab" href={`#v-tabs-the${(i + 1)}`} role="tab" aria-controls="v-tabs-the1" aria-selected="true">+{e.addedPhone}</a>
-              ))}
+              {(firestoreData.length == 0) ? (
+                <a className="nav-link docs-tabs" id="v-tabs-the1-tab" data-mdb-toggle="tab" href={`#v-tabs-the`} role="tab" aria-controls="v-tabs-the" aria-selected="false">No Contacts Added</a>
+              ) : (
+                firestoreData.map((e, i) => (
+                  <a className="nav-link docs-tabs" id="v-tabs-the1-tab" data-mdb-toggle="tab" href={`#v-tabs-the${(i + 1)}`} role="tab" aria-controls="v-tabs-the1" aria-selected="true">+{e.addedPhone}</a>
+                ))
+              )}
             </div>
             {/* Tab navs */}
 
@@ -424,6 +428,7 @@ const Chat = () => {
                   <div className="mb-3">
                     <label for="message-text" className="col-form-label">Phone number</label>
                     <input placeholder="i.e 03081511889" type="number" value={phone_number} onChange={(e) => set_phone_number(e.target.value)} className="form-control" id="input_text_code" />
+                    <span>Note: Only Add Valid Contacts Otherwise your messages will be sent to unkown or wrong contact which may even not exist</span>
                   </div>
 
                   <button type="button" className="btn btn-success" onClick={onSubmitPhoneNumber} data-mdb-dismiss="modal">Add Contact</button>
