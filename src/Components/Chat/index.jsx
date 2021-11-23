@@ -3,10 +3,13 @@ import React, { useEffect, useState } from "react";
 
 import firebase from "../../firebase/index";
 import "firebase/firestore";
+import 'firebase/auth';
 
 // import send_message_icon from "../../resources/send_button.png";
 
 import Sidebar from "react-sidebar";
+
+import history from "../../history";
 
 // import Button from '@material-ui/core/Button';
 
@@ -15,6 +18,10 @@ import "./style.scss";
 const mql = window.matchMedia(`(min-width: 800px)`);
 
 const Chat = () => {
+
+  const [firestoreData, setFirestoreData] = useState([]);
+  const [signedInUserData, setSignedInUserData] = useState({});
+  const [status, setStatus] = useState(false);
 
   const contacts = [
     { id: 1, name: "John Doe" },
@@ -26,7 +33,7 @@ const Chat = () => {
 
   const [sidebarDocked, setSidebarDocked] = useState(mql.matches);
 
-   const [phone_number, set_phone_number] = useState(0);
+  const [phone_number, set_phone_number] = useState(0);
 
   // const [otp_code, set_otp_code] = useState(0);
 
@@ -73,7 +80,7 @@ const Chat = () => {
   //       console.log(error);
   //     });
   // };
-  
+
   // const onSubmitOtp = (e) => {
   //   e.preventDefault();
   //   let otpInput = otp_code;
@@ -97,22 +104,131 @@ const Chat = () => {
   //     });
   // };
 
-  const onSubmitPhoneNumber = () => {
-    alert(phone_number)
-  }
-
   mql.addListener(mediaQueryChanged);
 
   useEffect(() => {
-    console.log("This is the useEffect")
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        setStatus(true);
+        setSignedInUserData(user);
+        console.log("The signed in user data is as follows==>", user)
+        // loadData();
+      }
+      else {
+        setStatus(false)
+        setSignedInUserData(null);
+        history.push('/login')
+      }
+    })
+
+    //console.log("All the user data of current signed user: ", props.user_data)
+
+    ///////////////////////////////////This code is for RETRIVING DATABASE data//////////////////////////
+    // const db = firebase.firestore();
+
+    // db.collection('Data/abc/123')
+    //     .get()
+    //     .then(snapshot => {
+    //         let data = [];
+    //         snapshot.forEach(element => {
+    //             data.push(Object.assign({
+    //                 id: element.id,
+    //                 name: element.name,
+    //                 uid: '123',
+    //                 createAt: element.createAt,
+    //                 UniqueID: element.id
+    //             }, element.data()))
+    //         })
+    //         console.log("data=> ", data)
+    //         if (firestoreData.length != data.length) {
+    //             setFirestoreData(data);
+    //             console.log("Updated")
+    //         }
+    //     }).catch(err => {
+    //         console.log(err)
+    //     })
+    ///////////////////////////////////This code is for RETRIVING DATABASE data//////////////////////////
   })
+
+  const onSubmitPhoneNumber = () => {
+    if (status) {
+      //Getting the email from the signed in data
+      let email = signedInUserData.email;
+      const db = firebase.firestore();
+      //For getting the exact time
+      const { serverTimestamp } = firebase.firestore.FieldValue;
+
+      // let cleanedEmail;
+      // let email = signedInUserData.email;
+      // cleanedEmail = email.split("@").join("");
+      // cleanedEmail = email.split(".").join("");
+      // cleanedEmail = email.split("`").join("");
+      // cleanedEmail = email.split("!").join("");
+      // cleanedEmail = email.split(".").join("");
+      // cleanedEmail = email.split("#").join("");
+      // cleanedEmail = email.split("%").join("");
+      // cleanedEmail = email.split("^").join("");
+      // cleanedEmail = email.split("&").join("");
+      // cleanedEmail = email.split("*").join("");
+      // cleanedEmail = email.split("(").join("");
+      // cleanedEmail = email.split(")").join("");
+      // cleanedEmail = email.split('"').join("");
+      // cleanedEmail = email.split("'").join("");
+      // cleanedEmail = email.split("_").join("");
+      // cleanedEmail = email.split("-").join("");
+      // cleanedEmail = email.split("+").join("");
+      // cleanedEmail = email.split("=").join("");
+      // cleanedEmail = email.split("}").join("");
+      // cleanedEmail = email.split("{").join("");
+      // cleanedEmail = email.split("]").join("");
+      // cleanedEmail = email.split("[").join("");
+      // cleanedEmail = email.split("|").join("");
+      // cleanedEmail = email.split("/").join("");
+      // cleanedEmail = email.split("?").join("");
+      // cleanedEmail = email.split(";").join("");
+      // cleanedEmail = email.split(",").join("");
+
+      let thingsRef = db.collection(`Data//${signedInUserData.email}`);
+
+      thingsRef.add({
+          uid: signedInUserData.uid,
+          userEmail: signedInUserData.email,
+          userName: signedInUserData.displayName,
+          // ProjectMembers: teamMatesArray,
+          // ProjectStages: allStageArray,
+          // ProjectTasks: allTaskArray,
+          // ProjectStartingDate: projectStartingDate.toLocaleDateString(),
+          // ProjectEndingDate: projectEndingDate.toLocaleDateString(),
+          // CurrentStage: currentStage,
+          // CurrentStageCurrentTask: currentStageCurrentTask,
+          createAt: JSON.stringify(serverTimestamp),
+          // UniqueID: id
+      }).then(() => {
+          console.log("Data sent");
+          //const { pathname } = window.location.url
+          //if (pathname == '/new') {
+          //    alert("Your Project is initialized Successfully.Redirecting you to your projects page.")
+          //    Router.push('/staff');
+          
+          }
+      })
+
+      //Now sending the data for notifications
+
+      //Now sending the data for notifications
+      //
+      // alert(true)
+    }
+    else{
+      alert("Please.Get yourself signed In first.");
+    }
+  }
 
   return (
     <>
       <Sidebar
         sidebar={
           <div>
-
             {/* Tab navs */}
             <div className="nav flex-column nav-tabs text-center tab-docs-left" id="v-tabs-tab" role="tablist" aria-orientation="vertical">
               {contacts.map((contact, i) => (
@@ -294,7 +410,7 @@ const Chat = () => {
 
                   <div className="mb-3">
                     <label for="message-text" className="col-form-label">Phone number</label>
-                    <input placeholder="i.e 3081511889" type="number" value={phone_number} onChange={(e) => set_phone_number(e.target.value)} className="form-control" id="input_text_code" />
+                    <input placeholder="i.e 03081511889" type="number" value={phone_number} onChange={(e) => set_phone_number(e.target.value)} className="form-control" id="input_text_code" />
                   </div>
 
                   <button type="button" className="btn btn-success" onClick={onSubmitPhoneNumber} data-mdb-dismiss="modal">Add Contact</button>
