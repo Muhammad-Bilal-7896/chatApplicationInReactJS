@@ -153,7 +153,7 @@ const Chat = () => {
   const onSubmitPhoneNumber = () => {
     if (status) {
       //Getting the email from the signed in data
-      let email = signedInUserData.email;
+      //let email = signedInUserData.email;
       const db = firebase.firestore();
       //For getting the exact time
       const { serverTimestamp } = firebase.firestore.FieldValue;
@@ -188,12 +188,13 @@ const Chat = () => {
       // cleanedEmail = email.split(";").join("");
       // cleanedEmail = email.split(",").join("");
 
-      let thingsRef = db.collection(`Data//${signedInUserData.email}`);
+      let thingsRef = db.collection(`Data/ContactList/${signedInUserData.phoneNumber}`);
 
       thingsRef.add({
           uid: signedInUserData.uid,
-          userEmail: signedInUserData.email,
-          userName: signedInUserData.displayName,
+          userPhone: signedInUserData.phoneNumber,
+          addedPhone:phone_number,
+          // userName: signedInUserData.displayName,
           // ProjectMembers: teamMatesArray,
           // ProjectStages: allStageArray,
           // ProjectTasks: allTaskArray,
@@ -201,16 +202,15 @@ const Chat = () => {
           // ProjectEndingDate: projectEndingDate.toLocaleDateString(),
           // CurrentStage: currentStage,
           // CurrentStageCurrentTask: currentStageCurrentTask,
-          createAt: JSON.stringify(serverTimestamp),
+          // createAt: JSON.stringify(serverTimestamp),
           // UniqueID: id
       }).then(() => {
-          console.log("Data sent");
-          //const { pathname } = window.location.url
-          //if (pathname == '/new') {
-          //    alert("Your Project is initialized Successfully.Redirecting you to your projects page.")
-          //    Router.push('/staff');
-          
-          }
+          alert("Contact Added Successfully.");
+          // const { pathname } = window.location.url
+          // if (pathname == '/new') {
+          //     alert("Your Project is initialized Successfully.Redirecting you to your projects page.")
+          //     Router.push('/staff');
+          // }
       })
 
       //Now sending the data for notifications

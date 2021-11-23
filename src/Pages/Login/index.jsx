@@ -294,7 +294,7 @@ const Login = () => {
                 setStatus(true);
                 console.log("The signed in User data is equal to :---- ", signedInUserData);
                 setSignedInUserData(user);
-                history.push("/")
+                //history.push("/")
                 // console.log("...........",user.uid)
                 // loadData();
             }
