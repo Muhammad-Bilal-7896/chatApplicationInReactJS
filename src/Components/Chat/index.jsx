@@ -26,9 +26,9 @@ const Chat = () => {
 
   const [sidebarDocked, setSidebarDocked] = useState(mql.matches);
 
-  const [phone_number, setPhone_number] = useState(0);
+   const [phone_number, set_phone_number] = useState(0);
 
-  const [otp_code, set_otp_code] = useState(0);
+  // const [otp_code, set_otp_code] = useState(0);
 
   const toggleCollapse = (val) => {
     setIsOpen(val);
@@ -38,64 +38,68 @@ const Chat = () => {
     setSidebarDocked(mql.matches);
   }
 
-  const setUpRecaptcha = () => {
-    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
-      "recaptcha-container",
-      {
-        size: "invisible",
-        callback: function (response) {
-          console.log("Captcha Resolved");
-          onSignInSubmit();
-        },
-        defaultCountry: "PK",
-      }
-    );
-  };
+  // const setUpRecaptcha = () => {
+  //   window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
+  //     "recaptcha-container",
+  //     {
+  //       size: "invisible",
+  //       callback: function (response) {
+  //         console.log("Captcha Resolved");
+  //         onSignInSubmit();
+  //       },
+  //       defaultCountry: "PK",
+  //     }
+  //   );
+  // };
 
-  const onSignInSubmit = (e) => {
-    e.preventDefault();
-    setUpRecaptcha();
-    let phoneNumber = "+92" + phone_number;
-    console.log(phoneNumber);
-    let appVerifier = window.recaptchaVerifier;
-    firebase
-      .auth()
-      .signInWithPhoneNumber(phoneNumber, appVerifier)
-      .then(function (confirmationResult) {
-        // SMS sent. Prompt user to type the code from the message, then sign the
-        // user in with confirmationResult.confirm(code).
-        window.confirmationResult = confirmationResult;
-        // console.log(confirmationResult);
-        alert("OTP is sent.Enter it now.");
-      })
-      .catch(function (error) {
-        alert(error)
-        console.log(error);
-      });
-  };
+  // const onSignInSubmit = (e) => {
+  //   e.preventDefault();
+  //   setUpRecaptcha();
+  //   let phoneNumber = "+92" + phone_number;
+  //   console.log(phoneNumber);
+  //   let appVerifier = window.recaptchaVerifier;
+  //   firebase
+  //     .auth()
+  //     .signInWithPhoneNumber(phoneNumber, appVerifier)
+  //     .then(function (confirmationResult) {
+  //       // SMS sent. Prompt user to type the code from the message, then sign the
+  //       // user in with confirmationResult.confirm(code).
+  //       window.confirmationResult = confirmationResult;
+  //       // console.log(confirmationResult);
+  //       alert("OTP is sent.Enter it now.");
+  //     })
+  //     .catch(function (error) {
+  //       alert(error)
+  //       console.log(error);
+  //     });
+  // };
   
-  const onSubmitOtp = (e) => {
-    e.preventDefault();
-    let otpInput = otp_code;
-    let optConfirm = window.confirmationResult;
-    // console.log(codee);
-    optConfirm
-      .confirm(otpInput)
-      .then((result) => {
-        // User signed in successfully.
-        // console.log("Result" + result.verificationID);
-        let mobilePhone = phone_number;
-        //Yahan par mobile number verify hoga
-        alert("Phone Number Verified Successfully");
-        // let data=this.props
+  // const onSubmitOtp = (e) => {
+  //   e.preventDefault();
+  //   let otpInput = otp_code;
+  //   let optConfirm = window.confirmationResult;
+  //   // console.log(codee);
+  //   optConfirm
+  //     .confirm(otpInput)
+  //     .then((result) => {
+  //       // User signed in successfully.
+  //       // console.log("Result" + result.verificationID);
+  //       let mobilePhone = phone_number;
+  //       //Yahan par mobile number verify hoga
+  //       alert("Phone Number Verified Successfully");
+  //       // let data=this.props
 
-        let user = result.user;
-      })
-      .catch(function (error) {
-        console.log(error);
-        alert("INVALID OTP.PLEASE TRY AGAIN");
-      });
-  };
+  //       let user = result.user;
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error);
+  //       alert("INVALID OTP.PLEASE TRY AGAIN");
+  //     });
+  // };
+
+  const onSubmitPhoneNumber = () => {
+    alert(phone_number)
+  }
 
   mql.addListener(mediaQueryChanged);
 
@@ -279,21 +283,21 @@ const Chat = () => {
               </div>
               <div className="modal-body">
                 <form>
-                  <div className="mb-3">
+                  {/* <div className="mb-3">
                     <label for="recipient-name" className="col-form-label">Enter the Mobile Phone Number of the Person:</label>
                     <input placeholder="like 3081511889" value={phone_number} onChange={(e) => setPhone_number(e.target.value)} type="number" className="form-control" id="input_text_code" />
                     <h6 className="text-danger mt-2">Note: Currently this service is only for +92 i.e for pakistan</h6>
                     <div id="recaptcha-container"></div>
                     <button type="button" className="btn btn-primary" title="Send Code" onClick={onSignInSubmit}>Send Code</button>
 
-                  </div>
+                  </div> */}
 
                   <div className="mb-3">
-                    <label for="message-text" className="col-form-label">Enter OTP</label>
-                    <input placeholder="i.e 45644" type="number" value={otp_code} onChange={(e) => set_otp_code(e.target.value)} className="form-control" id="input_text_code" />
+                    <label for="message-text" className="col-form-label">Phone number</label>
+                    <input placeholder="i.e 3081511889" type="number" value={phone_number} onChange={(e) => set_phone_number(e.target.value)} className="form-control" id="input_text_code" />
                   </div>
 
-                  <button type="button" className="btn btn-success" onClick={onSubmitOtp} data-mdb-dismiss="modal">Verify</button>
+                  <button type="button" className="btn btn-success" onClick={onSubmitPhoneNumber} data-mdb-dismiss="modal">Add Contact</button>
 
                 </form>
               </div>
