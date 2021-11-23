@@ -123,31 +123,38 @@ const Chat = () => {
 
     //console.log("All the user data of current signed user: ", props.user_data)
 
-    ///////////////////////////////////This code is for RETRIVING DATABASE data//////////////////////////
-    // const db = firebase.firestore();
+    //Take data from database only when user is signed in because without that phone number is not provided
+    if (status) {
+      ///////////////////////////////////This code is for RETRIVING DATABASE data//////////////////////////
+      const db = firebase.firestore();
 
-    // db.collection('Data/abc/123')
-    //     .get()
-    //     .then(snapshot => {
-    //         let data = [];
-    //         snapshot.forEach(element => {
-    //             data.push(Object.assign({
-    //                 id: element.id,
-    //                 name: element.name,
-    //                 uid: '123',
-    //                 createAt: element.createAt,
-    //                 UniqueID: element.id
-    //             }, element.data()))
-    //         })
-    //         console.log("data=> ", data)
-    //         if (firestoreData.length != data.length) {
-    //             setFirestoreData(data);
-    //             console.log("Updated")
-    //         }
-    //     }).catch(err => {
-    //         console.log(err)
-    //     })
-    ///////////////////////////////////This code is for RETRIVING DATABASE data//////////////////////////
+      db.collection(`Data/ContactList/${signedInUserData.phoneNumber}`)
+        .get()
+        .then(snapshot => {
+          let data = [];
+          snapshot.forEach(element => {
+            data.push(Object.assign({
+              id: element.id,
+              uid: element.uid,
+              addedPhone:element.addedPhone,
+              userPhone: element.userPhone,
+              dateTimeAdded: element.dateTimeAdded
+            }, element.data()))
+          })
+          console.log("The Contact List is equal to => ", data)
+          if (firestoreData.length != data.length) {
+            setFirestoreData(data);
+            console.log("Updated")
+          }
+        }).catch(err => {
+          console.log(err)
+        })
+      ///////////////////////////////////This code is for RETRIVING DATABASE data//////////////////////////
+    }
+    else{
+      console.log("User should be signed in first to get the database data.");
+    }
+
   })
 
   const onSubmitPhoneNumber = () => {
@@ -188,29 +195,35 @@ const Chat = () => {
       // cleanedEmail = email.split(";").join("");
       // cleanedEmail = email.split(",").join("");
 
+      const today = new Date();
+      const date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+      const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+      const dateTime = date + ' ' + time;
+
       let thingsRef = db.collection(`Data/ContactList/${signedInUserData.phoneNumber}`);
 
       thingsRef.add({
-          uid: signedInUserData.uid,
-          userPhone: signedInUserData.phoneNumber,
-          addedPhone:phone_number,
-          // userName: signedInUserData.displayName,
-          // ProjectMembers: teamMatesArray,
-          // ProjectStages: allStageArray,
-          // ProjectTasks: allTaskArray,
-          // ProjectStartingDate: projectStartingDate.toLocaleDateString(),
-          // ProjectEndingDate: projectEndingDate.toLocaleDateString(),
-          // CurrentStage: currentStage,
-          // CurrentStageCurrentTask: currentStageCurrentTask,
-          // createAt: JSON.stringify(serverTimestamp),
-          // UniqueID: id
+        uid: signedInUserData.uid,
+        userPhone: signedInUserData.phoneNumber,
+        addedPhone: phone_number,
+        dateTimeAdded: dateTime
+        // userName: signedInUserData.displayName,
+        // ProjectMembers: teamMatesArray,
+        // ProjectStages: allStageArray,
+        // ProjectTasks: allTaskArray,
+        // ProjectStartingDate: projectStartingDate.toLocaleDateString(),
+        // ProjectEndingDate: projectEndingDate.toLocaleDateString(),
+        // CurrentStage: currentStage,
+        // CurrentStageCurrentTask: currentStageCurrentTask,
+        // createAt: JSON.stringify(serverTimestamp),
+        // UniqueID: id
       }).then(() => {
-          alert("Contact Added Successfully.");
-          // const { pathname } = window.location.url
-          // if (pathname == '/new') {
-          //     alert("Your Project is initialized Successfully.Redirecting you to your projects page.")
-          //     Router.push('/staff');
-          // }
+        alert("Contact Added Successfully.");
+        // const { pathname } = window.location.url
+        // if (pathname == '/new') {
+        //     alert("Your Project is initialized Successfully.Redirecting you to your projects page.")
+        //     Router.push('/staff');
+        // }
       })
 
       //Now sending the data for notifications
@@ -219,7 +232,7 @@ const Chat = () => {
       //
       // alert(true)
     }
-    else{
+    else {
       alert("Please.Get yourself signed In first.");
     }
   }
@@ -231,8 +244,8 @@ const Chat = () => {
           <div>
             {/* Tab navs */}
             <div className="nav flex-column nav-tabs text-center tab-docs-left" id="v-tabs-tab" role="tablist" aria-orientation="vertical">
-              {contacts.map((contact, i) => (
-                <a className="nav-link docs-tabs" id="v-tabs-the1-tab" data-mdb-toggle="tab" href={`#v-tabs-the${(i + 1)}`} role="tab" aria-controls="v-tabs-the1" aria-selected="true">{contact.name}</a>
+              {firestoreData.map((e, i) => (
+                <a className="nav-link docs-tabs" id="v-tabs-the1-tab" data-mdb-toggle="tab" href={`#v-tabs-the${(i + 1)}`} role="tab" aria-controls="v-tabs-the1" aria-selected="true">+{e.addedPhone}</a>
               ))}
             </div>
             {/* Tab navs */}
